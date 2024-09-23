@@ -1,13 +1,15 @@
 'use client';
+
 import { Editor } from '@/components/editor/Editor';
 import Header from '@/components/Header';
 import { updateDocument } from '@/lib/actions/room.actions';
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 import { ClientSideSuspense, RoomProvider } from '@liveblocks/react/suspense';
 import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ActiveCollaborators from './ActiveCollaborators';
 import Loader from './Loader';
+import ShareModal from './ShareModal';
 import { Input } from './ui/input';
 
 const CollaborativeRoom = ({
@@ -21,7 +23,7 @@ const CollaborativeRoom = ({
 	const [loading, setLoading] = useState(false);
 
 	const containerRef = useRef<HTMLDivElement>(null);
-	const inputRef = useRef<HTMLDivElement>(null);
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	const updateTitleHandler = async (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === 'Enter') {
@@ -36,7 +38,7 @@ const CollaborativeRoom = ({
 					}
 				}
 			} catch (error) {
-				console.log(error);
+				console.error(error);
 			}
 
 			setLoading(false);
@@ -78,7 +80,7 @@ const CollaborativeRoom = ({
 									placeholder='Enter title'
 									onChange={e => setDocumentTitle(e.target.value)}
 									onKeyDown={updateTitleHandler}
-									disable={!editing}
+									disabled={!editing}
 									className='document-title-input'
 								/>
 							) : (
@@ -86,6 +88,7 @@ const CollaborativeRoom = ({
 									<p className='document-title'>{documentTitle}</p>
 								</>
 							)}
+
 							{currentUserType === 'editor' && !editing && (
 								<Image
 									src='/assets/icons/edit.svg'
@@ -105,6 +108,14 @@ const CollaborativeRoom = ({
 						</div>
 						<div className='flex w-full flex-1 justify-end gap-2 sm:gap-3'>
 							<ActiveCollaborators />
+
+							<ShareModal
+								roomId={roomId}
+								collaborators={users}
+								creatorId={roomMetadata.creatorId}
+								currentUserType={currentUserType}
+							/>
+
 							<SignedOut>
 								<SignInButton />
 							</SignedOut>
