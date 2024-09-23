@@ -9,6 +9,7 @@ import {
 const UserTypeSelector = ({ userType, setUserType, onClickHandler }: UserTypeSelectorParams) => {
 	const accessChangeHandler = (type: UserType) => {
 		setUserType(type);
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 		onClickHandler && onClickHandler(type);
 	};
 
