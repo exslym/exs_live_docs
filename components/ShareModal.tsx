@@ -8,6 +8,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog';
+import { nanoid } from 'nanoid';
 
 import { updateDocumentAccess } from '@/lib/actions/room.actions';
 import { useSelf } from '@liveblocks/react/suspense';
@@ -42,6 +43,11 @@ const ShareModal = ({
 			userType: userType as UserType,
 			updatedBy: user.info,
 		});
+
+		// collaborators.map(async coll => {
+		// 	console.log(coll);
+		// 	console.log(coll.id);
+		// });
 
 		setLoading(false);
 	};
@@ -97,7 +103,7 @@ const ShareModal = ({
 					<ul className='flex flex-col'>
 						{collaborators.map(collaborator => (
 							<Collaborator
-								key={collaborator.id}
+								key={collaborator.id || nanoid()}
 								roomId={roomId}
 								creatorId={creatorId}
 								email={collaborator.email}
