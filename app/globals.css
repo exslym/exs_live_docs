@@ -39,6 +39,9 @@
 	.text-28-semibold {
 		@apply text-[28px] font-semibold;
 	}
+	.text-20-semibold {
+		@apply text-[20px] font-semibold;
+	}
 	.text-10-regular {
 		@apply text-[10px] font-normal;
 	}
