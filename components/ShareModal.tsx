@@ -74,8 +74,13 @@ const ShareModal = ({
 					<DialogTitle>Manage who can view this project</DialogTitle>
 					<DialogDescription>Select which users can view and edit this document</DialogDescription>
 				</DialogHeader>
+				<DialogHeader>
+					<DialogTitle className='text-red-400'>
+						The user you invite must be signed-in first!
+					</DialogTitle>
+				</DialogHeader>
 
-				<Label htmlFor='email' className='mt-6 text-blue-100'>
+				<Label htmlFor='email' className='mt-4 text-blue-100'>
 					Email address
 				</Label>
 				<div className='flex items-center gap-3'>
