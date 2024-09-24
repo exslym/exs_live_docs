@@ -1,6 +1,6 @@
 ## [Live Docs](https://exs-live-docs.vercel.app/)
 
-[![preview](https://github.com/exslym/exs-live-docs/blob/main/public/preview.jpg)](https://exs-live-docs.vercel.app/)
+[![preview](https://raw.githubusercontent.com/exslym/exs_live_docs/refs/heads/main/public/preview.jpg)](https://exs-live-docs.vercel.app/)
 
   <div>
     <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logoColor=white&logo=react&color=3178C6" alt="React" />
