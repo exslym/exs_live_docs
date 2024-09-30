@@ -6,7 +6,7 @@ import { updateDocument } from '@/lib/actions/room.actions';
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 import { ClientSideSuspense, RoomProvider } from '@liveblocks/react/suspense';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ActiveCollaborators from './ActiveCollaborators';
 import Loader from './Loader';
 import ShareModal from './ShareModal';

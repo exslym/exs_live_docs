@@ -7,7 +7,7 @@ import {
 	useUnreadInboxNotificationsCount,
 } from '@liveblocks/react/suspense';
 import Image from 'next/image';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 const Notifications = () => {
 	const { inboxNotifications } = useInboxNotifications();
